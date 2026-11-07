@@ -1,1 +1,23 @@
 @import "tailwindcss";
+
+/* Paleta Singers House: lilás + amarelo (tirada da logo). */
+@theme {
+  --color-lilas-50: #f7f3f8;
+  --color-lilas-100: #efe7f1;
+  --color-lilas-200: #ddcde2;
+  --color-lilas-300: #c4a9cc;
+  --color-lilas-400: #a785b0;
+  --color-lilas-500: #8a6791;
+  --color-lilas-600: #74527b;
+  --color-lilas-700: #5f4265;
+  --color-lilas-800: #4a3350;
+  --color-lilas-900: #36253a;
+
+  --color-amarelo-50: #fdf9e6;
+  --color-amarelo-100: #faf0c2;
+  --color-amarelo-200: #f5e494;
+  --color-amarelo-300: #ecd466;
+  --color-amarelo-400: #e2c33d;
+  --color-amarelo-500: #c9a823;
+  --color-amarelo-600: #a0851a;
+}

@@ -38,7 +38,7 @@ export default function FormAluno({ acao, aluno, textoBotao }: Props) {
           {[1, 2].map((g) => (
             <label
               key={g}
-              className="flex cursor-pointer items-center gap-2 rounded-lg border border-stone-300 bg-white px-3 py-2 has-[:checked]:border-rose-500 has-[:checked]:bg-rose-50"
+              className="flex cursor-pointer items-center gap-2 rounded-lg border border-stone-300 bg-white px-3 py-2 has-[:checked]:border-lilas-500 has-[:checked]:bg-lilas-50"
             >
               <input type="radio" name="grupo" value={g} required defaultChecked={aluno?.grupo === g} />
               {NOMES_GRUPO[g]}
@@ -56,7 +56,7 @@ export default function FormAluno({ acao, aluno, textoBotao }: Props) {
           {(Object.keys(NOMES_REGIAO) as (keyof typeof NOMES_REGIAO)[]).map((r) => (
             <label
               key={r}
-              className="flex cursor-pointer items-center justify-center gap-2 rounded-lg border border-stone-300 bg-white px-3 py-2 has-[:checked]:border-rose-500 has-[:checked]:bg-rose-50"
+              className="flex cursor-pointer items-center justify-center gap-2 rounded-lg border border-stone-300 bg-white px-3 py-2 has-[:checked]:border-lilas-500 has-[:checked]:bg-lilas-50"
             >
               <input
                 type="radio"

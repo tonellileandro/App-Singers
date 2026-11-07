@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { criarClienteNavegador } from "@/lib/supabase/client";
@@ -36,14 +37,14 @@ export default function PaginaLogin() {
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center p-4">
+    <main className="flex min-h-screen items-center justify-center bg-lilas-600 p-4">
       <form
         onSubmit={entrar}
-        className="w-full max-w-sm space-y-5 rounded-2xl bg-white p-8 shadow-sm ring-1 ring-stone-200"
+        className="w-full max-w-sm space-y-5 rounded-2xl border-t-4 border-amarelo-300 bg-white p-8 shadow-xl"
       >
-        <div>
-          <h1 className="text-2xl font-semibold">Aulas de Canto</h1>
-          <p className="mt-1 text-sm text-stone-500">Entre para acessar o painel.</p>
+        <div className="flex flex-col items-center text-center">
+          <Image src="/logo.png" alt="Singers House — escola de voz e música" width={140} height={140} priority />
+          <p className="mt-3 text-sm text-stone-500">Entre para acessar o painel.</p>
         </div>
 
         <label className="block">
@@ -54,7 +55,7 @@ export default function PaginaLogin() {
             autoComplete="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="mt-1 w-full rounded-lg border border-stone-300 px-3 py-2 outline-none focus:border-rose-500 focus:ring-2 focus:ring-rose-200"
+            className="mt-1 w-full rounded-lg border border-stone-300 px-3 py-2 outline-none focus:border-lilas-500 focus:ring-2 focus:ring-lilas-200"
           />
         </label>
 
@@ -66,7 +67,7 @@ export default function PaginaLogin() {
             autoComplete="current-password"
             value={senha}
             onChange={(e) => setSenha(e.target.value)}
-            className="mt-1 w-full rounded-lg border border-stone-300 px-3 py-2 outline-none focus:border-rose-500 focus:ring-2 focus:ring-rose-200"
+            className="mt-1 w-full rounded-lg border border-stone-300 px-3 py-2 outline-none focus:border-lilas-500 focus:ring-2 focus:ring-lilas-200"
           />
         </label>
 
@@ -79,7 +80,7 @@ export default function PaginaLogin() {
         <button
           type="submit"
           disabled={carregando}
-          className="w-full rounded-lg bg-rose-600 px-4 py-2.5 font-medium text-white hover:bg-rose-700 disabled:opacity-60"
+          className="w-full rounded-lg bg-lilas-600 px-4 py-2.5 font-medium text-white hover:bg-lilas-700 disabled:opacity-60"
         >
           {carregando ? "Entrando…" : "Entrar"}
         </button>
