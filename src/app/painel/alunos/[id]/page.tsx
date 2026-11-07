@@ -5,7 +5,8 @@ import type { Aluno } from "@/lib/alunos";
 import FormAluno from "../FormAluno";
 import AcoesAluno from "./AcoesAluno";
 import { atualizarAluno } from "../actions";
-import { botaoSecundario, cartao } from "@/components/ui";
+import { botaoPrimario, botaoSecundario, cartao } from "@/components/ui";
+import { formatarDataCurta } from "@/lib/fichas";
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -33,6 +34,13 @@ export default async function PaginaAluno({ params, searchParams }: Props) {
     .limit(1)
     .maybeSingle();
 
+  const { data: fichas } = await supabase
+    .from("fichas")
+    .select("id, titulo, data")
+    .eq("aluno_id", id)
+    .order("data", { ascending: false })
+    .order("criado_em", { ascending: false });
+
   return (
     <div className="mx-auto max-w-2xl space-y-4">
       <Link href="/painel/alunos" className="text-sm text-stone-500 hover:text-stone-800">
@@ -57,6 +65,37 @@ export default async function PaginaAluno({ params, searchParams }: Props) {
           ✓ Anamnese salva.
         </p>
       )}
+
+      <section className={`${cartao} space-y-3`}>
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <h2 className="text-lg font-semibold">Fichas de treino</h2>
+          <Link href={`/painel/fichas/nova?aluno=${a.id}`} className={botaoPrimario}>
+            + Nova ficha
+          </Link>
+        </div>
+        {fichas?.length ? (
+          <ul className="divide-y divide-stone-200 text-sm">
+            {fichas.map((f) => (
+              <li key={f.id}>
+                <Link href={`/painel/fichas/${f.id}`} className="flex justify-between py-2 hover:text-lilas-700">
+                  <span>{f.titulo}</span>
+                  <span className="text-stone-500">{formatarDataCurta(f.data)}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="text-sm text-stone-500">Nenhuma ficha ainda.</p>
+        )}
+        <a
+          href={`/ficha/${a.token_publico}`}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-block text-sm text-lilas-700 underline"
+        >
+          👁 Abrir a página do aluno
+        </a>
+      </section>
 
       <section className={`${cartao} space-y-3`}>
         <h2 className="text-lg font-semibold">Anamnese</h2>

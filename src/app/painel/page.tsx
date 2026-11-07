@@ -18,10 +18,16 @@ export default async function Painel() {
           <p className="mt-1 text-3xl font-semibold text-lilas-700">{count ?? 0}</p>
           <p className="mt-3 text-sm font-medium text-lilas-700">Ver alunos →</p>
         </Link>
-        <div className={`${cartao} text-stone-500`}>
-          <p className="font-medium text-stone-700">Em breve</p>
-          <p className="mt-1 text-sm">Avaliações, biblioteca de exercícios e montagem de fichas.</p>
-        </div>
+        <Link href="/painel/exercicios" className={`${cartao} block hover:ring-lilas-300`}>
+          <p className="text-sm text-stone-500">Biblioteca</p>
+          <p className="mt-1 text-lg font-semibold text-lilas-700">Exercícios</p>
+          <p className="mt-3 text-sm font-medium text-lilas-700">Abrir biblioteca →</p>
+        </Link>
+        <Link href="/painel/fichas/nova" className={`${cartao} block hover:ring-lilas-300`}>
+          <p className="text-sm text-stone-500">Atalho</p>
+          <p className="mt-1 text-lg font-semibold text-lilas-700">Montar nova ficha</p>
+          <p className="mt-3 text-sm font-medium text-lilas-700">Começar →</p>
+        </Link>
       </div>
     </div>
   );
